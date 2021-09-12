@@ -89,15 +89,6 @@ void LinkedList::push_front(string in_url_name, string in_url){
 		head->set_prev(NULL);
 	}
 	else{
-//		Node* tmp = head;
-//		head = new_node;
-//		head->set_next(tmp);
-//		head->get_next()->set_prev(head);
-//		// added
-////		head->set_prev(NULL);
-////		tmp->set_prev(head);
-//		tmp = NULL;
-//		delete tmp;
 		new_node->set_next(head);
 		head->set_prev(new_node);
 		head = new_node;
@@ -105,7 +96,6 @@ void LinkedList::push_front(string in_url_name, string in_url){
 	// increment the size of the queue
 	size++;
 	new_node = NULL;
-	// remove delete
 	delete new_node;
 	cout << "success" << endl;
 }
@@ -130,13 +120,10 @@ void LinkedList::push_back(string in_url_name, string in_url){
 }
 
 void LinkedList::pop_front(){
-//	cout << size << endl;
 	if(size == 0){
 		cout << "failure" << endl;
 	}
 	else if(size == 1){
-//		head = head->get_next();
-//		tail = head;
 		delete head;
 		head = nullptr;
 		tail = nullptr;
@@ -157,7 +144,6 @@ void LinkedList::pop_front(){
 	}
 }
 
-// NEW POP BACK
 void LinkedList::pop_back(){
 	if(size == 0){
 		cout << "failure" << endl;
@@ -215,8 +201,6 @@ void LinkedList::clear(bool print_success){
 		current = head;
 	}
 	size = 0;
-//	head = NULL;
-//	tail = NULL;
 	if(print_success == true){
 		cout << "success" << endl;
 	}
@@ -326,11 +310,9 @@ void dequeue::print(){
 		cout << current->get_url_name() << " " << current->get_url() << endl;
 		current = current->get_prev();
 		}
-//		delete current;
 	}
 }
 
-// do we traverse from top to bottom or bottom to top???
 void dequeue::find(string wanted_url_name){
 	string original_url_name = wanted_url_name;
 	transform(wanted_url_name.begin(), wanted_url_name.end(), wanted_url_name.begin(), ::tolower);
@@ -348,7 +330,6 @@ void dequeue::find(string wanted_url_name){
 			current = current->get_next();
 		}
 	}
-//	delete current;
 	if(found == false){
 		cout << "not found " << original_url_name << endl;
 	}
